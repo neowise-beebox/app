@@ -5,30 +5,32 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.project.spaceapps.beebox.beebox.adapter.BeeCustomAdapter;
 import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.model.Bee;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
-    private ViewPager mViewPager;
     private DrawerLayout drawer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    private GoogleMap mMap;
+    private ArrayList<Bee> bees;
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        for (Bee bee : bees) {
+            LatLng latLng = new LatLng(bee.getLatitude(), bee.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(latLng).title(bee.getDescription()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
 
     }
 
@@ -72,10 +91,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ListView listViewProduto;
         listViewProduto = (ListView) findViewById(R.id.list_bee);
 
-        ArrayList<Bee> consulta = (ArrayList<Bee>) db.getAllBee();
+        bees = (ArrayList<Bee>) db.getAllBee();
 
         BeeCustomAdapter beeCustomAdapter;
-        beeCustomAdapter = new BeeCustomAdapter(consulta, this);
+        beeCustomAdapter = new BeeCustomAdapter(bees, this);
 
         listViewProduto.setAdapter(beeCustomAdapter);
     }

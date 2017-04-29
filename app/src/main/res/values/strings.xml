@@ -12,4 +12,6 @@
 
     <string name="description">Descrição</string>
     <string name="add">Adicionar</string>
+
+    <string name="maps_key">AIzaSyD2weuXVFlPwdAIEWOAScQ9W9Q_axVbu4Y</string>
 </resources>

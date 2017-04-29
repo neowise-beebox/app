@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.project.spaceapps.beebox.beebox.MainActivity"
     tools:showIn="@layout/activity_main">
+
+    <include layout="@layout/fragment_map" />
 
     <ListView
         android:id="@+id/list_bee"
@@ -14,4 +17,4 @@
         android:layout_height="match_parent">
     </ListView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

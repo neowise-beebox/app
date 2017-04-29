@@ -96,7 +96,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Bee produto = new Bee(Integer.parseInt(cursor.getString(0)),
-        Long.parseLong(cursor.getString(1).toString()), Long.parseLong(cursor.getString(2).toString()), (cursor.getString(4).toString()), cursor.getString(5).toString(), cursor.getString(6).toString(), cursor.getString(7).toString());
+                Double.parseDouble(cursor.getString(1).toString()), Double.parseDouble(cursor.getString(2).toString()), (cursor.getString(3).toString()), cursor.getString(4).toString(), cursor.getString(5).toString(), cursor.getString(6).toString());
 
         return produto;
     }
