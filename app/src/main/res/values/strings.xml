@@ -9,4 +9,7 @@
 
     <string name="navigation_drawer_open">Abrindo NavView</string>
     <string name="navigation_drawer_close">Fechando NavViewr</string>
+
+    <string name="description">Descrição</string>
+    <string name="add">Adicionar</string>
 </resources>

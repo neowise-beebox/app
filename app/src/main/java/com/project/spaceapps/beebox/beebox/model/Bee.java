@@ -10,14 +10,48 @@ import java.util.Date;
 public class Bee {
 
     int cod;
-    long latitude;
-    long longitude;
+    double latitude;
+    double longitude;
     ArrayList<Place> places;
-    Date date;
+    String date;
     String picture;
     String description;
+    String species;
 
-    public Bee(int cod, long latitude, long longitude, ArrayList<Place> places, Date date, String picture, String description) {
+    public Bee(){
+
+    }
+
+    public Bee(double latitude, double longitude, ArrayList<Place> places, String date, String picture, String description, String species) {
+        this.latitude =  latitude;
+        this.longitude =  longitude;
+        this.places =  places;
+        this.date =  date;
+        this.picture =  picture;
+        this.description =  description;
+        this.species =  species;
+    }
+
+    public Bee(double latitude, double longitude,  String date, String picture, String description, String species) {
+        this.latitude =  latitude;
+        this.longitude =  longitude;
+        this.date =  date;
+        this.picture =  picture;
+        this.description =  description;
+        this.species =  species;
+    }
+
+    public Bee(int cod, double latitude, double longitude, String date, String picture, String description, String species) {
+        this.cod =  cod;
+        this.latitude =  latitude;
+        this.longitude =  longitude;
+        this.date =  date;
+        this.picture =  picture;
+        this.description =  description;
+        this.species =  species;
+    }
+
+    public Bee(int cod, double latitude, double longitude, ArrayList<Place> places, String date, String picture, String description, String species) {
         this.cod =  cod;
         this.latitude =  latitude;
         this.longitude =  longitude;
@@ -25,9 +59,10 @@ public class Bee {
         this.date =  date;
         this.picture =  picture;
         this.description =  description;
+        this.species =  species;
     }
 
-    public Bee(int cod, String description) {
+    public Bee(int cod, String description){
         this.cod =  cod;
         this.description =  description;
     }
@@ -40,51 +75,59 @@ public class Bee {
         this.cod = cod;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public ArrayList<Place> getLocais() {
+    public ArrayList<Place> getPlaces() {
         return places;
     }
 
-    public void setLocais(ArrayList<Place> places) {
+    public void setPlaces(ArrayList<Place> places) {
         this.places = places;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public String getFoto() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setFoto(String picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 
-    public String getDescricao() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescricao(String description) {
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
     }
 }

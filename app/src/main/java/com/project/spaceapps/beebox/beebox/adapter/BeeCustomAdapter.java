@@ -76,7 +76,7 @@ public class BeeCustomAdapter extends ArrayAdapter<Bee> implements View.OnClickL
         result.startAnimation(animation);
         lastPosition = position;
 
-        viewHolder.tv_description_bee.setText("" + bee.getDescricao());
+        viewHolder.tv_description_bee.setText("" + bee.getDescription());
 
         viewHolder.ll_linha.setOnClickListener(new View.OnClickListener() {
             @Override

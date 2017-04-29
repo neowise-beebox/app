@@ -1,5 +1,6 @@
 package com.project.spaceapps.beebox.beebox;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.project.spaceapps.beebox.beebox.adapter.BeeCustomAdapter;
+import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.model.Bee;
 
 import java.util.ArrayList;
@@ -35,28 +37,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView listViewProduto;
-        listViewProduto = (ListView) findViewById(R.id.list_abelhas);
-
-        ArrayList<Bee> bees = new ArrayList<Bee>();
-
-        bees.add(new Bee(1, "Abelhinha1"));
-        bees.add(new Bee(1, "Abelhinha2"));
-        bees.add(new Bee(1, "Abelhinha3"));
-
-        //ArrayList<Bee> consulta = (ArrayList<Bee>) db.getAllProdutos();
-
-        BeeCustomAdapter beeCustomAdapter;
-        beeCustomAdapter = new BeeCustomAdapter(bees, this);
-
-        listViewProduto.setAdapter(beeCustomAdapter);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               Intent i = new Intent(MainActivity.this, AddBeeActivity.class);
+                startActivity(i);
             }
         });
 
@@ -74,7 +60,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
+    }
 
+    DatabaseHandler db;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        db = new DatabaseHandler(this);
+
+        ListView listViewProduto;
+        listViewProduto = (ListView) findViewById(R.id.list_bee);
+
+        ArrayList<Bee> consulta = (ArrayList<Bee>) db.getAllBee();
+
+        BeeCustomAdapter beeCustomAdapter;
+        beeCustomAdapter = new BeeCustomAdapter(consulta, this);
+
+        listViewProduto.setAdapter(beeCustomAdapter);
     }
 
     @Override
