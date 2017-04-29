@@ -11,6 +11,14 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="toolbarStyle">@style/textColorDark</item>
+    </style>
+
+    <style name="textColorDark" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="titleTextColor">#0e0e0e</item>
+        <item name="colorControlNormal">#0e0e0e</item>
+        <item name="android:textColorPrimaryInverse">#0e0e0e</item>
+        <item name="android:textColorSecondary">#0e0e0e</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

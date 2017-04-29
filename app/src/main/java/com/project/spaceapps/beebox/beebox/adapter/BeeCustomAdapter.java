@@ -87,6 +87,11 @@ public class BeeCustomAdapter extends ArrayAdapter<Bee> implements View.OnClickL
             }
         });
 
+        if(bee.getCod() % 2 == 0) {
+            viewHolder.ll_linha.setBackgroundResource(R.color.line);
+        } else {
+            viewHolder.ll_linha.setBackgroundResource(R.color.lineTwo);
+        }
         return convertView;
     }
 }

@@ -57,7 +57,6 @@ public class AddBeeActivity extends AppCompatActivity {
                 latitude = gps.getLatitude();
                 longitude = gps.getLongitude();
 
-
                 description = ed_description.getText().toString();
 
                 Log.d("Descrição", "" + description.length());

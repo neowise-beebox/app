@@ -1,10 +1,13 @@
 package com.project.spaceapps.beebox.beebox;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,12 +15,15 @@ import android.widget.TextView;
 import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.model.Bee;
 
+import java.util.UUID;
+
 public class InfoBeeActivity extends AppCompatActivity {
 
     private DatabaseHandler db;
     private ImageView iv_bee;
     private TextView tv_description;
     private TextView tv_date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,5 @@ public class InfoBeeActivity extends AppCompatActivity {
 
         tv_description.setText("" + bee.getDescription());
         tv_date.setText("" + bee.getDate());
-
     }
 }
