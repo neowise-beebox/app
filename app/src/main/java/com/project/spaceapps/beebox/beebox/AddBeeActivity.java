@@ -24,19 +24,18 @@ import com.project.spaceapps.beebox.beebox.model.Place;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AddBeeActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
-
     private EditText ed_description;
     private Button btn_add_bee;
     private DatabaseHandler db;
     private GPSTracker gps;
     private String filePath;
-
-    double latitude = 0f, longitude = 0f;
+    private double latitude = 0f, longitude = 0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +53,9 @@ public class AddBeeActivity extends AppCompatActivity {
                 latitude = gps.getLatitude();
                 longitude = gps.getLongitude();
 
-                db.addBee(new Bee(latitude, longitude, "x", filePath ,ed_description.getText().toString(), "x"));
+                Log.d("Data", "" + Calendar.getInstance());
 
-                Log.d("xxxx", "" + filePath);
+                db.addBee(new Bee(latitude, longitude, Calendar.getInstance().toString(), filePath ,ed_description.getText().toString(), "x"));
                 finish();
             }
         });
@@ -78,14 +77,10 @@ public class AddBeeActivity extends AppCompatActivity {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(photo);
 
-
-            // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
             Uri tempUri = getImageUri(getApplicationContext(), photo);
-
-            // CALL THIS METHOD TO GET THE ACTUAL PATH
             File finalFile = new File(getRealPathFromURI(tempUri));
 
-            filePath = finalFile.getName();
+            filePath = finalFile.getPath();
 
         }
     }

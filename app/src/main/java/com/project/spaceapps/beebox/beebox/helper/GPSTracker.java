@@ -24,7 +24,7 @@ import android.widget.Toast;
 public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
-    Location location;
+    private Location location;
     protected LocationManager locationManager;
 
     boolean isGPSEnabled = false;

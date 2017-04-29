@@ -30,7 +30,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_COD = "cod";
     private static final String KEY_LATITUDE = "latitude";
     private static final String KEY_LONGITUDE = "longitude";
-    //private static final String KEY_PLACES = "places";
     private static final String KEY_DATE = "date";
     private static final String KEY_PICTURE = "picture";
     private static final String KEY_DESCRIPTION = "description";

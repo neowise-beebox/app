@@ -9,14 +9,14 @@ import java.util.Date;
 
 public class Bee {
 
-    int cod;
-    double latitude;
-    double longitude;
-    ArrayList<Place> places;
-    String date;
-    String picture;
-    String description;
-    String species;
+    private int cod;
+    private double latitude;
+    private double longitude;
+    private ArrayList<Place> places;
+    private String date;
+    private String picture;
+    private String description;
+    private String species;
 
     public Bee(){
 

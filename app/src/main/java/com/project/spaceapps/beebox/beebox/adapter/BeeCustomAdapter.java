@@ -82,7 +82,7 @@ public class BeeCustomAdapter extends ArrayAdapter<Bee> implements View.OnClickL
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mContext, InfoBeeActivity.class);
-                i.putExtra("id", String.valueOf(bee.getCod()));
+                i.putExtra("cod", String.valueOf(bee.getCod()));
                 mContext.startActivity(i);
             }
         });

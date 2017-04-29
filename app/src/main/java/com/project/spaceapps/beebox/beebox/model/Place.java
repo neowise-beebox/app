@@ -6,11 +6,11 @@ package com.project.spaceapps.beebox.beebox.model;
 
 public class Place {
 
-    long latitude;
-    long longitude;
-    String city;
-    String uf;
-    String description;
+    private long latitude;
+    private long longitude;
+    private String city;
+    private String uf;
+    private String description;
 
     public Place(long latitude, long longitude, String city, String uf, String description){
         this.latitude = latitude;
