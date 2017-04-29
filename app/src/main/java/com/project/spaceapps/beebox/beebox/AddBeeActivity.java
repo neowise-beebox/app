@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.helper.GPSTracker;
@@ -23,8 +24,10 @@ import com.project.spaceapps.beebox.beebox.model.Place;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddBeeActivity extends AppCompatActivity {
 
@@ -34,7 +37,8 @@ public class AddBeeActivity extends AppCompatActivity {
     private Button btn_add_bee;
     private DatabaseHandler db;
     private GPSTracker gps;
-    private String filePath;
+    private String filePath = "";
+    private String description = "";
     private double latitude = 0f, longitude = 0f;
 
     @Override
@@ -53,9 +57,28 @@ public class AddBeeActivity extends AppCompatActivity {
                 latitude = gps.getLatitude();
                 longitude = gps.getLongitude();
 
-                Log.d("Data", "" + Calendar.getInstance());
 
-                db.addBee(new Bee(latitude, longitude, Calendar.getInstance().toString(), filePath ,ed_description.getText().toString(), "x"));
+                description = ed_description.getText().toString();
+
+                Log.d("Descrição", "" + description.length());
+
+                if(description.length() == 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "Para adicionar uma abelha, insira uma descrição para ela!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(filePath.length() == 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "Para identificar a abelha, selecione uma imagem.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                Calendar cal = Calendar.getInstance();
+                Date date = cal.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                db.addBee(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x"));
                 finish();
             }
         });
@@ -81,7 +104,6 @@ public class AddBeeActivity extends AppCompatActivity {
             File finalFile = new File(getRealPathFromURI(tempUri));
 
             filePath = finalFile.getPath();
-
         }
     }
 
