@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.project.spaceapps.beebox.beebox.MainActivity"
-    tools:showIn="@layout/activity_main">
-
-    <ListView
-        android:id="@+id/list_abelhas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+    tools:context="com.project.spaceapps.beebox.beebox.InfoBeeActivity">
 
 </android.support.constraint.ConstraintLayout>

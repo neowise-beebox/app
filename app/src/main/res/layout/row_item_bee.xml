@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_linha"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:weightSum="5">
+
+    <ImageView
+        android:id="@+id/img_bee"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:src="@drawable/bee"/>
+
+    <TextView
+        android:id="@+id/tv_description_bee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="left"
+        android:text="Abelha"
+        android:textColor="#383838"
+        android:textSize="20dp" />
+
+</LinearLayout>
