@@ -3,125 +3,143 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/big_margin"
     android:background="@color/colorBackground"
+    android:orientation="vertical"
     tools:context="com.project.spaceapps.beebox.beebox.InfoBeeActivity">
 
-    <ImageView
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="132dp"
-        android:layout_height="166dp"
-        android:id="@+id/iv_bee"/>
-
     <LinearLayout
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/big_margin"
+        android:paddingRight="@dimen/big_margin"
+        android:paddingTop="@dimen/big_margin"
+        android:paddingBottom="@dimen/fab_margin">
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_local"/>
-        <TextView
-            android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-            android:textSize="20sp"
-            android:textColor="@color/colorText"
-            android:text="@string/places"
-            android:id="@+id/tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:id="@+id/iv_bee"
+            android:layout_width="132dp"
+            android:layout_height="166dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/nav_header_vertical_spacing" />
 
-    <ListView
-        android:layout_margin="@dimen/nav_header_vertical_spacing"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:id="@+id/lvPlaces"/>
-
-    <LinearLayout
-        android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_local"/>
-        <TextView
-            android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-            android:textSize="20sp"
-            android:textColor="@color/colorText"
-            android:text="@string/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="@dimen/half_margin"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
+            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAlignment="center">
+
             <TextView
-                android:textSize="20sp"
-                android:textColor="@color/colorText"
-                android:text="30"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <View
+                android:id="@+id/tv_description"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
+                android:text="@string/places"
+                android:textColor="@color/colorText"
+                android:textSize="20sp" />
         </LinearLayout>
 
-        <TextView
-            android:textColor="@color/colorText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/"/>
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/place" />
+
             <TextView
-                android:textSize="20sp"
-                android:textColor="@color/colorText"
-                android:text="04"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
+                android:text="@string/date"
+                android:textColor="@color/colorText"
+                android:textSize="20sp" />
         </LinearLayout>
 
-        <TextView
-            android:textColor="@color/colorText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/"/>
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textSize="20sp"
-                android:textColor="@color/colorText"
-                android:text="2017"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/half_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/colorText" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="04"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/colorText" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2017"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -132,6 +150,30 @@
         android:layout_height="wrap_content" />
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/place" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:text="@string/places" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvPlaces"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/nav_header_vertical_spacing" />
 
 
 </LinearLayout>

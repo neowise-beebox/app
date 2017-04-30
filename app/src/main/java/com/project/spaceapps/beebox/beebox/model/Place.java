@@ -20,6 +20,11 @@ public class Place {
         this.description = description;
     }
 
+    public Place(String city, String description){
+        this.city = city;
+        this.description = description;
+    }
+
     public long getLatitude() {
         return latitude;
     }
@@ -36,11 +41,11 @@ public class Place {
         this.longitude = longitude;
     }
 
-    public String getCidade() {
+    public String getCity() {
         return city;
     }
 
-    public void setCidade(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
@@ -52,11 +57,11 @@ public class Place {
         this.uf = uf;
     }
 
-    public String getDescricao() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescricao(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
