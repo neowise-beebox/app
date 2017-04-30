@@ -17,4 +17,6 @@
     <string name="maps_key">AIzaSyD2weuXVFlPwdAIEWOAScQ9W9Q_axVbu4Y</string>
     <string name="take_a_pic">Tire uma foto</string>
     <string name="save">Salvar</string>
+    <string name="places">Locais</string>
+    <string name="date">Data</string>
 </resources>
