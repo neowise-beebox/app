@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.contact) {
             Intent i = new Intent(this, ContactActivity.class);
             startActivity(i);
+        } else if (id == R.id.exit) {
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

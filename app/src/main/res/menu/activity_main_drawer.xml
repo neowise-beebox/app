@@ -10,7 +10,7 @@
 
         <item
             android:id="@+id/exit"
-            android:icon="@drawable/contact"
-            android:title="@string/contact" />
+            android:icon="@drawable/exit"
+            android:title="@string/exit" />
     </group>
 </menu>
