@@ -31,6 +31,7 @@ import com.project.spaceapps.beebox.beebox.webservice.APIInterface;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -39,8 +40,6 @@ import permissions.dispatcher.RuntimePermissions;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static java.security.AccessController.getContext;
 
 
 @RuntimePermissions
@@ -56,9 +55,11 @@ public class AddBeeActivity extends AppCompatActivity {
     private String description = "";
     private double latitude = 0f, longitude = 0f;
     private String android_id;
+    private ArrayList<Bee> bees;
 
     Call<Task> callBee;
     APIInterface apiService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +67,7 @@ public class AddBeeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ed_description = (EditText) findViewById(R.id.ed_description);
-        btn_add_bee    = (Button) findViewById(R.id.btn_add_bee);
+        btn_add_bee = (Button) findViewById(R.id.btn_add_bee);
 
         db = new DatabaseHandler(this);
 
@@ -88,13 +89,13 @@ public class AddBeeActivity extends AppCompatActivity {
 
                 Log.d("Descrição", "" + description.length());
 
-                if(description.length() == 0) {
+                if (description.length() == 0) {
                     Toast.makeText(getApplicationContext(),
                             "Para adicionar uma abelha, insira uma descrição para ela!", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                if(filePath.length() == 0) {
+                if (filePath.length() == 0) {
                     Toast.makeText(getApplicationContext(),
                             "Para identificar a abelha, selecione uma imagem.", Toast.LENGTH_LONG).show();
                     return;
@@ -104,24 +105,22 @@ public class AddBeeActivity extends AppCompatActivity {
                 Date date = cal.getTime();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-                db.addBee(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x"));
+                db.addBee(new Bee(latitude, longitude, sdf.format(date), filePath, description, "x"));
 
                 apiService = APIClient.getService().create(APIInterface.class);
 
-                callBee = apiService.saveBee(new Gson().toJson(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x", android_id)));
+                bees = (ArrayList<Bee>) db.getAllBee();
+                int cod = bees.size();
+
+                callBee = apiService.saveBee(new Gson().toJson(new Bee(latitude, longitude, sdf.format(date), filePath, description, "x", android_id, cod)));
 
                 callBee.enqueue(new Callback<Task>() {
                     @Override
                     public void onResponse(Call<Task> call, Response<Task> response) {
                         if (response.raw().code() == 200) {
-
-                            //Task t = response.raw().body().toString();
-                            //Log.e("INFOBEE", "" + t.getText());
-
+                            Task t = response.body();
+                            Log.e("INFOBEE", "" + response.raw().body().toString());
                         }
-
-                        Task t = response.body();
-                        Log.e("INFOBEE2", "" + response.raw().body().toString());
                     }
 
                     @Override
@@ -137,7 +136,7 @@ public class AddBeeActivity extends AppCompatActivity {
             }
         });
 
-        this.imageView = (ImageView)this.findViewById(R.id.iv_bee);
+        this.imageView = (ImageView) this.findViewById(R.id.iv_bee);
         Button photoButton = (Button) this.findViewById(R.id.btn_add_image);
         photoButton.setOnClickListener(new View.OnClickListener() {
 
@@ -183,7 +182,7 @@ public class AddBeeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        if (id == android.R.id.home){
+        if (id == android.R.id.home) {
             onBackPressed();
         }
 
@@ -191,7 +190,7 @@ public class AddBeeActivity extends AppCompatActivity {
     }
 
     @NeedsPermission(Manifest.permission.CAMERA)
-    public void takePhoto(){
+    public void takePhoto() {
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
