@@ -12,6 +12,9 @@
 
     <string name="description">Descrição</string>
     <string name="add">Adicionar</string>
+    <string name="add_image">Adicionar Foto</string>
 
     <string name="maps_key">AIzaSyD2weuXVFlPwdAIEWOAScQ9W9Q_axVbu4Y</string>
+    <string name="take_a_pic">Tire uma foto</string>
+    <string name="save">Salvar</string>
 </resources>

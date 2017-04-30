@@ -5,37 +5,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:padding="@dimen/nav_header_vertical_spacing"
     tools:context="com.project.spaceapps.beebox.beebox.AddBeeActivity">
 
+    <TextView
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/take_a_pic"/>
+
     <ImageView
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/iv_bee"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/bee"/>
+        android:src="@drawable/logo_bee"/>
 
-    <Button
-        android:id="@+id/btn_add_image"
+    <LinearLayout
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+        android:gravity="center"
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:background="@drawable/roundedbutton"
+            android:id="@+id/btn_add_image"
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_image"/>
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_margin="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="@string/description"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_description"
+            android:hint="@string/description"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="300dp"
 
-    <EditText
-        android:id="@+id/ed_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/description"/>
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textCursorDrawable="@null"
+            app:backgroundTint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/btn_add_bee"
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+        android:gravity="center"
+        android:weightSum="10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_add_bee"
+            android:background="@drawable/roundedbutton"
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save"/>
+    </LinearLayout>
 
 
 </LinearLayout>
