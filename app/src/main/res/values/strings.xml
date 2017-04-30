@@ -29,4 +29,15 @@
     <string name="info"> Para mais informações entrem no site (Aguardem...)<u>beebox.com.br</u></string>
     <string name="info2"> Software Desenvolvido durante o SpaceApps Challenge 2017 Curitiba. Dois dias intensos de trabalho feito na Jupter TechSpace.</string>
 
+    <string name="team">equipe</string>
+    <string name="matheus_catossi">Matheus Catossi</string>
+    <string name="desc_matheus_catossi">Desenvolver Web, Mobile e criador de interfaces com IA por Ex.: ChatBot. </string>
+    <string name="nathalia_garcial">Nathalia Garcia</string>
+    <string name="desc_nathalia_garcial">Design, nerd e aspirante musical com foco em UX e animação 2D.</string>
+    <string name="vinicius_luiz">Vinicius Luiz</string>
+    <string name="desc_vinicius_luiz">Desenvolvedor Web cursando Sistema de Informação.</string>
+    <string name="wilder_roberto">Wilder Roberto</string>
+    <string name="desc_wilder_roberto">Desenvolvedor Web e Mobile.</string>
+    <string name="julio_cesar">Julio Cesar</string>
+    <string name="desc_julio_cesar">Facilitador de Bussiness do Ideias de Futuro e formado em Vendas.</string>
 </resources>

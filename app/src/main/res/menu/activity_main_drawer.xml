@@ -9,6 +9,11 @@
             android:title="@string/contact" />
 
         <item
+            android:id="@+id/team"
+            android:icon="@drawable/conference"
+            android:title="@string/team" />
+
+        <item
             android:id="@+id/exit"
             android:icon="@drawable/exit"
             android:title="@string/exit" />

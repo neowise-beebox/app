@@ -66,6 +66,7 @@ public class AddBeeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_bee);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        AddBeeActivityPermissionsDispatcher.getLatLngWithCheck(AddBeeActivity.this);
         ed_description = (EditText) findViewById(R.id.ed_description);
         btn_add_bee = (Button) findViewById(R.id.btn_add_bee);
 
@@ -81,10 +82,8 @@ public class AddBeeActivity extends AppCompatActivity {
         btn_add_bee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gps = new GPSTracker(AddBeeActivity.this);
-                latitude = gps.getLatitude();
-                longitude = gps.getLongitude();
 
+                AddBeeActivityPermissionsDispatcher.getLatLngWithCheck(AddBeeActivity.this);
                 description = ed_description.getText().toString();
 
                 Log.d("Descrição", "" + description.length());
@@ -199,5 +198,12 @@ public class AddBeeActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         AddBeeActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+    public void getLatLng(){
+        gps = new GPSTracker(AddBeeActivity.this);
+        latitude = gps.getLatitude();
+        longitude = gps.getLongitude();
     }
 }

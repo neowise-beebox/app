@@ -143,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
         } else if (id == R.id.exit) {
             finish();
+        } else if (id == R.id.team) {
+            Intent i = new Intent(this, MemberActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
