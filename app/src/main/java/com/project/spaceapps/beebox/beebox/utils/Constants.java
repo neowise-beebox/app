@@ -13,6 +13,8 @@ public class Constants {
     public static final String BASE_URL = "https://beebox-apidae.herokuapp.com/";
     public static final String SAVE_BEE = "savebee";
 
+    public static final String GET_BEE = "listrelatives/{deviceId}{cod}";
+
 
 
 }

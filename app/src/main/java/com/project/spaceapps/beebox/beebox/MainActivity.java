@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         for (Bee bee : bees) {
             LatLng latLng = new LatLng(bee.getLatitude(), bee.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title(bee.getDescription()).icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("marker_bee",100,140))));
+            mMap.addMarker(new MarkerOptions().position(latLng).title(bee.getDescription()).icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("marker_bee",90,105))));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,13));
