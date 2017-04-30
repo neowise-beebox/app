@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.helper.GPSTracker;
 import com.project.spaceapps.beebox.beebox.model.Bee;
@@ -95,7 +96,7 @@ public class AddBeeActivity extends AppCompatActivity {
 
                 apiService = APIClient.getService().create(APIInterface.class);
 
-                callBee = apiService.saveBee(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x"));
+                callBee = apiService.saveBee(new Gson().toJson(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x")));
 
                 callBee.enqueue(new Callback<Task>() {
                     @Override

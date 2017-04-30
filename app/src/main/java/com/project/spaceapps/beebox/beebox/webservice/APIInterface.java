@@ -18,5 +18,5 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST(Constants.SAVE_BEE)
-    Call<Task> saveBee(@Field("beedata") Bee bee);
+    Call<Task> saveBee(@Field("beedata") String bee);
 }

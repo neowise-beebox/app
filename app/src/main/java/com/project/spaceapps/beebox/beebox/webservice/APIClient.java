@@ -23,7 +23,8 @@ public class APIClient {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             httpClient.addInterceptor(logging);
             retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).
-                    addConverterFactory(GsonConverterFactory.create()).build();
+                    addConverterFactory(GsonConverterFactory.create())
+                    .client(httpClient.build()).build();
         }
         return retrofit;
     }
