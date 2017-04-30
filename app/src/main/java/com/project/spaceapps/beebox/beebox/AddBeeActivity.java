@@ -150,14 +150,19 @@ public class AddBeeActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(photo);
-
-            Uri tempUri = getImageUri(getApplicationContext(), photo);
-            File finalFile = new File(getRealPathFromURI(tempUri));
-
-            filePath = finalFile.getPath();
+            AddBeeActivityPermissionsDispatcher.saveWithCheck(AddBeeActivity.this, data);
         }
+    }
+
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    public void save(Intent data){
+        Bitmap photo = (Bitmap) data.getExtras().get("data");
+        imageView.setImageBitmap(photo);
+
+        Uri tempUri = getImageUri(getApplicationContext(), photo);
+        File finalFile = new File(getRealPathFromURI(tempUri));
+
+        filePath = finalFile.getPath();
     }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
