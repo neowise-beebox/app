@@ -1,6 +1,8 @@
 package com.project.spaceapps.beebox.beebox;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,6 +23,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.project.spaceapps.beebox.beebox.adapter.BeeCustomAdapter;
@@ -61,8 +65,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
     }
 
     private GoogleMap mMap;
@@ -74,10 +76,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         for (Bee bee : bees) {
             LatLng latLng = new LatLng(bee.getLatitude(), bee.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title(bee.getDescription()));
+            mMap.addMarker(new MarkerOptions().position(latLng).title(bee.getDescription()).icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("marker_bee",100,140))));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,13));
+            googleMap.animateCamera(CameraUpdateFactory.zoomIn());
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
         }
 
+    }
+
+    public Bitmap resizeMapIcons(String iconName,int width, int height){
+        Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),getResources().getIdentifier(iconName, "drawable", getPackageName()));
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, width, height, false);
+        return resizedBitmap;
     }
 
     DatabaseHandler db;

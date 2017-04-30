@@ -3,10 +3,11 @@
     <color name="colorPrimary">#f0c716</color>
     <color name="colorPrimaryDark">#f0c716</color>
     <color name="colorAccent">#f0c716</color>
-    <color name="colorBackground">#0e0e0e</color>
+    <color name="colorBackground">#262626</color>
+    <color name="colorSecond">#5e5e5e</color>
 
-    <color name="line">#1a1a1a</color>
-    <color name="lineTwo">#0e0e0e</color>
+    <color name="line">#252525</color>
+    <color name="lineTwo">#161616</color>
 
     <color name="colorText">#f2f2f2</color>
 </resources>

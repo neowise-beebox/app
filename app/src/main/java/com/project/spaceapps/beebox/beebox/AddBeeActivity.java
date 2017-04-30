@@ -21,6 +21,8 @@ import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.helper.GPSTracker;
 import com.project.spaceapps.beebox.beebox.model.Bee;
 import com.project.spaceapps.beebox.beebox.model.Place;
+import com.project.spaceapps.beebox.beebox.webservice.APIClient;
+import com.project.spaceapps.beebox.beebox.webservice.APIInterface;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -28,6 +30,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class AddBeeActivity extends AppCompatActivity {
 
@@ -41,6 +49,8 @@ public class AddBeeActivity extends AppCompatActivity {
     private String description = "";
     private double latitude = 0f, longitude = 0f;
 
+    Call<Bee> callBee;
+    APIInterface apiService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +60,9 @@ public class AddBeeActivity extends AppCompatActivity {
         btn_add_bee    = (Button) findViewById(R.id.btn_add_bee);
 
         db = new DatabaseHandler(this);
+
+        apiService = APIClient.getService().create(APIInterface.class);
+
         btn_add_bee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +92,25 @@ public class AddBeeActivity extends AppCompatActivity {
 
                 db.addBee(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x"));
                 finish();
+
+                callBee = apiService.saveBee((new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x")));
+
+                callBee.enqueue(new Callback<Bee>() {
+                    @Override
+                    public void onResponse(Call<Bee> call, Response<Bee> response) {
+                        if (response.raw().code() == 200) {
+
+                            Log.d("", "" + response.body().toString());
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Bee> call, Throwable t) {
+                        Log.e("INFOMEMBRO", t.toString());
+                    }
+                });
+
             }
         });
 
