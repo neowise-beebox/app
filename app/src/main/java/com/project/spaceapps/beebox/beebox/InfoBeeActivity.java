@@ -74,16 +74,15 @@ public class InfoBeeActivity extends AppCompatActivity {
         lvPlaces = (ListView) findViewById(R.id.lvPlaces);
 
         ArrayList<Place> places = new ArrayList<Place>();
-        places.add(new Place("São Paulo", "São Paulo - Capital"));
         places.add(new Place("Guarulhos", "GRU"));
-        places.add(new Place("São Paulo", "São Paulo - Capital"));
-        places.add(new Place("São Paulo", "São Paulo - Capital"));
-        places.add(new Place("São Paulo", "São Paulo - Capital"));
+        places.add(new Place("Guarulhos", "GRU"));
+        places.add(new Place("Guarulhos", "GRU"));
+        places.add(new Place("Guarulhos", "GRU"));
+        places.add(new Place("Guarulhos", "GRU"));
 
         PlaceCustomAdapter placeCustomAdapter;
         placeCustomAdapter = new PlaceCustomAdapter(places, this);
 
         lvPlaces.setAdapter(placeCustomAdapter);
-
     }
 }

@@ -22,7 +22,6 @@ public class Bee {
     private String description;
     private String species;
     private String idDevice;
-
     public Bee(){
 
     }
@@ -46,6 +45,18 @@ public class Bee {
         this.species =  species;
         this.idDevice =  idDevice;
     }
+
+    public Bee(double latitude, double longitude,  String date, String picture, String description, String species, String idDevice, int cod) {
+        this.cod =  cod;
+        this.latitude =  latitude;
+        this.longitude =  longitude;
+        this.date =  date;
+        this.picture =  picture;
+        this.description =  description;
+        this.species =  species;
+        this.idDevice =  idDevice;
+    }
+
 
     public Bee(double latitude, double longitude,  String date, String picture, String description, String species) {
         this.latitude =  latitude;
