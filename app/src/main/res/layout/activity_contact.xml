@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:textSize="18dp"
         android:paddingBottom="@dimen/fab_margin"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorText"
         android:text="@string/contact_en"
         />
 
