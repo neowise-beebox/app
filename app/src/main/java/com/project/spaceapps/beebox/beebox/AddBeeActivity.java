@@ -1,19 +1,20 @@
 package com.project.spaceapps.beebox.beebox;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,7 +23,6 @@ import com.google.gson.Gson;
 import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.helper.GPSTracker;
 import com.project.spaceapps.beebox.beebox.model.Bee;
-import com.project.spaceapps.beebox.beebox.model.Place;
 import com.project.spaceapps.beebox.beebox.model.Task;
 import com.project.spaceapps.beebox.beebox.webservice.APIClient;
 import com.project.spaceapps.beebox.beebox.webservice.APIInterface;
@@ -30,16 +30,17 @@ import com.project.spaceapps.beebox.beebox.webservice.APIInterface;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
+@RuntimePermissions
 public class AddBeeActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 1888;
@@ -59,7 +60,6 @@ public class AddBeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bee);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         ed_description = (EditText) findViewById(R.id.ed_description);
         btn_add_bee    = (Button) findViewById(R.id.btn_add_bee);
@@ -134,8 +134,7 @@ public class AddBeeActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                AddBeeActivityPermissionsDispatcher.takePhotoWithCheck(AddBeeActivity.this);
             }
         });
     }
@@ -175,5 +174,17 @@ public class AddBeeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @NeedsPermission(Manifest.permission.CAMERA)
+    public void takePhoto(){
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, CAMERA_REQUEST);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        AddBeeActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 }
