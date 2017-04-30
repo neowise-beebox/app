@@ -21,6 +21,7 @@ import com.project.spaceapps.beebox.beebox.handler.DatabaseHandler;
 import com.project.spaceapps.beebox.beebox.helper.GPSTracker;
 import com.project.spaceapps.beebox.beebox.model.Bee;
 import com.project.spaceapps.beebox.beebox.model.Place;
+import com.project.spaceapps.beebox.beebox.model.Task;
 import com.project.spaceapps.beebox.beebox.webservice.APIClient;
 import com.project.spaceapps.beebox.beebox.webservice.APIInterface;
 
@@ -49,7 +50,7 @@ public class AddBeeActivity extends AppCompatActivity {
     private String description = "";
     private double latitude = 0f, longitude = 0f;
 
-    Call<Bee> callBee;
+    Call<Task> callBee;
     APIInterface apiService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,25 +92,34 @@ public class AddBeeActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
                 db.addBee(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x"));
-                finish();
 
-                callBee = apiService.saveBee((new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x")));
+                apiService = APIClient.getService().create(APIInterface.class);
 
-                callBee.enqueue(new Callback<Bee>() {
+                callBee = apiService.saveBee(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x"));
+
+                callBee.enqueue(new Callback<Task>() {
                     @Override
-                    public void onResponse(Call<Bee> call, Response<Bee> response) {
+                    public void onResponse(Call<Task> call, Response<Task> response) {
                         if (response.raw().code() == 200) {
 
-                            Log.d("", "" + response.body().toString());
+                            //Task t = response.raw().body().toString();
+                            //Log.e("INFOBEE", "" + t.getText());
 
                         }
+
+                        Task t = response.body();
+                        Log.e("INFOBEE2", "" + response.raw().body().toString());
                     }
 
                     @Override
-                    public void onFailure(Call<Bee> call, Throwable t) {
+                    public void onFailure(Call<Task> call, Throwable t) {
                         Log.e("INFOMEMBRO", t.toString());
                     }
                 });
+
+                Log.e("INFOBEE", "ENTROU");
+
+                finish();
 
             }
         });

@@ -1,11 +1,13 @@
 package com.project.spaceapps.beebox.beebox.webservice;
 
 import com.project.spaceapps.beebox.beebox.model.Bee;
+import com.project.spaceapps.beebox.beebox.model.Task;
 import com.project.spaceapps.beebox.beebox.utils.Constants;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
@@ -14,8 +16,7 @@ import retrofit2.http.POST;
 
 public interface APIInterface {
 
-    @POST("/tasks")
-    Call<Bee>  saveBee(@Body Bee bee);
-
-
+    @FormUrlEncoded
+    @POST(Constants.SAVE_BEE)
+    Call<Task> saveBee(@Field("beedata") Bee bee);
 }

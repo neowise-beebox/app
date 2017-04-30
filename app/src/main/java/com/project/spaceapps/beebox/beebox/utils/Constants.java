@@ -10,8 +10,8 @@ public class Constants {
     public static final String MESSAGE = "STATUS_MESSAGE";
     public static final String STATUSCONNECTION = "STATUS_CONNECTION";
 
-    public static final String BASE_URL = "http://192.168.100.148:5000/";
-    public static final String SAVE_BEE = "savebee/";
+    public static final String BASE_URL = "https://beebox-apidae.herokuapp.com/";
+    public static final String SAVE_BEE = "savebee";
 
 
 
