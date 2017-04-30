@@ -35,7 +35,7 @@
                 android:gravity="left"
                 android:text="Description"
                 android:textColor="@color/colorText"
-                android:textSize="20dp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tv_city_place"
@@ -46,7 +46,7 @@
                 android:gravity="left"
                 android:text="City"
                 android:textColor="@color/colorText"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
         </LinearLayout>
 
     </LinearLayout>

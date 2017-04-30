@@ -18,5 +18,5 @@
     <string name="take_a_pic">Tire uma foto</string>
     <string name="save">Salvar</string>
     <string name="places">Locais</string>
-    <string name="date">Data</string>
+    <string name="date">Data:  </string>
 </resources>

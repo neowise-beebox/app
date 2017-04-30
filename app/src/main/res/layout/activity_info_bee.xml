@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/big_margin"
         android:paddingRight="@dimen/big_margin"
-        android:paddingTop="@dimen/big_margin"
+        android:paddingTop="@dimen/fab_margin"
         android:paddingBottom="@dimen/fab_margin">
 
         <ImageView
@@ -34,34 +34,17 @@
             android:textAlignment="center">
 
             <TextView
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
                 android:text="@string/places"
                 android:textColor="@color/colorText"
                 android:textSize="20sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/place" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-                android:text="@string/date"
-                android:textColor="@color/colorText"
-                android:textSize="20sp" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,6 +53,15 @@
             android:layout_marginTop="@dimen/half_margin"
             android:gravity="center"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/nav_header_vertical_spacing"
+                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
+                android:text="@string/date"
+                android:textColor="@color/colorText"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -144,12 +136,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -162,6 +148,7 @@
             android:src="@drawable/place" />
 
         <TextView
+            android:textColor="@color/colorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
@@ -172,8 +159,7 @@
     <ListView
         android:id="@+id/lvPlaces"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/nav_header_vertical_spacing" />
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

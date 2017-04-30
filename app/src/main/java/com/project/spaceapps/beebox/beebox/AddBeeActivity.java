@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -39,6 +40,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static java.security.AccessController.getContext;
+
 
 @RuntimePermissions
 public class AddBeeActivity extends AppCompatActivity {
@@ -52,6 +55,7 @@ public class AddBeeActivity extends AppCompatActivity {
     private String filePath = "";
     private String description = "";
     private double latitude = 0f, longitude = 0f;
+    private String android_id;
 
     Call<Task> callBee;
     APIInterface apiService;
@@ -67,6 +71,11 @@ public class AddBeeActivity extends AppCompatActivity {
         db = new DatabaseHandler(this);
 
         apiService = APIClient.getService().create(APIInterface.class);
+
+        android_id = Settings.Secure.getString(this.getBaseContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
+        Log.e("IDANDROID", "" + android_id);
 
         btn_add_bee.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +108,7 @@ public class AddBeeActivity extends AppCompatActivity {
 
                 apiService = APIClient.getService().create(APIInterface.class);
 
-                callBee = apiService.saveBee(new Gson().toJson(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x")));
+                callBee = apiService.saveBee(new Gson().toJson(new Bee(latitude, longitude, sdf.format(date), filePath ,description, "x", android_id)));
 
                 callBee.enqueue(new Callback<Task>() {
                     @Override

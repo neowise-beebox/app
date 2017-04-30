@@ -1,7 +1,11 @@
 package com.project.spaceapps.beebox.beebox.model;
 
+import android.provider.Settings;
+
 import java.util.ArrayList;
 import java.util.Date;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Created by Matheus on 29/04/2017.
@@ -17,6 +21,7 @@ public class Bee {
     private String picture;
     private String description;
     private String species;
+    private String idDevice;
 
     public Bee(){
 
@@ -30,6 +35,16 @@ public class Bee {
         this.picture =  picture;
         this.description =  description;
         this.species =  species;
+    }
+
+    public Bee(double latitude, double longitude,  String date, String picture, String description, String species, String idDevice) {
+        this.latitude =  latitude;
+        this.longitude =  longitude;
+        this.date =  date;
+        this.picture =  picture;
+        this.description =  description;
+        this.species =  species;
+        this.idDevice =  idDevice;
     }
 
     public Bee(double latitude, double longitude,  String date, String picture, String description, String species) {
@@ -65,6 +80,14 @@ public class Bee {
     public Bee(int cod, String description){
         this.cod =  cod;
         this.description =  description;
+    }
+
+    public String getIdDevice() {
+        return idDevice;
+    }
+
+    public void setIdDevice(String idDevice) {
+        this.idDevice = idDevice;
     }
 
     public int getCod() {

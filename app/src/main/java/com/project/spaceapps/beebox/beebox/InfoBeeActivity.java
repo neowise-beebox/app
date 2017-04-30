@@ -27,7 +27,6 @@ public class InfoBeeActivity extends AppCompatActivity {
     private DatabaseHandler db;
     private ImageView iv_bee;
     private TextView tv_description;
-    private TextView tv_date;
     private ListView lvPlaces;
 
     private TextView tv_day;
@@ -51,21 +50,18 @@ public class InfoBeeActivity extends AppCompatActivity {
         Bitmap bmImg = BitmapFactory.decodeFile(bee.getPicture());
         iv_bee.setImageBitmap(bmImg);
 
-        tv_date = (TextView) findViewById(R.id.tv_date);
         tv_description = (TextView) findViewById(R.id.tv_description);
 
         tv_description.setText("" + bee.getDescription());
-        tv_date.setText("" + bee.getDate());
 
         String day = bee.getDate();
-        day.substring(0,2);
+        day = day.substring(0,2);
 
         String month = bee.getDate();
-        month.substring(2,4);
+        month = month.substring(3,5);
 
         String year = bee.getDate();
-        year.substring(4,8);
-
+        year = year.substring(6,10);
 
         tv_month = (TextView) findViewById(R.id.tv_month);
         tv_day = (TextView) findViewById(R.id.tv_day);
@@ -74,7 +70,6 @@ public class InfoBeeActivity extends AppCompatActivity {
         tv_month.setText("" + month);
         tv_day.setText("" + day);
         tv_year.setText("" + year);
-        
 
         lvPlaces = (ListView) findViewById(R.id.lvPlaces);
 
