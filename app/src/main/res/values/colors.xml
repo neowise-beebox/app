@@ -6,6 +6,10 @@
     <color name="colorBackground">#262626</color>
     <color name="colorSecond">#5e5e5e</color>
 
+    <color name="introColor1">#E88D67</color>
+    <color name="introColor2">#96ADC8</color>
+    <color name="introColor3">#449DD1</color>
+
     <color name="line">#252525</color>
     <color name="lineTwo">#161616</color>
 
