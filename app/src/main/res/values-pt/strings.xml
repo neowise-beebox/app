@@ -1,2 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="intro_1_title">Encontre Abelhas</string>
+    <string name="intro_1_desc">Você conhece alguma colmeia ou um lugar com abelhas frequentemente?</string>
+    <string name="intro_2_title">Diga onde elas estão vivendo</string>
+    <string name="intro_2_desc">Tire fotos delas para que possamos encontrar ambientes com um clima parecido onde elas podem viver. Assim instituições interessadas podem ajudar!</string>
+    <string name="intro_3_title">Ajude a salvá-las</string>
+    <string name="intro_3_desc">Compartilhe com seus amigos e mantenha as abelhas à salvo!</string>
+    <string name="action_settings">Configurações</string>
+    <string name="add">Adicionar</string>
+    <string name="contact">Contato</string>
+    <string name="contact_en">Contatos para enxames</string>
+    <string name="contact_one">193</string>
+    <string name="date">"Data:  "</string>
+    <string name="description">Descrição</string>
+    <string name="exit">Sair</string>
+    <string name="lb_contact_one">Corpo de Bombeiros</string>
+    <string name="lb_contact_two">Sistema de atendimento ao Cidadão</string>
+    <string name="contact_two"> 156</string>
+    <string name="places">Locais</string>
+    <string name="salutation">Olá, amigo!</string>
+    <string name="save">Salvar</string>
+    <string name="second_text_salutation">Ass. Beebox</string>
+    <string name="take_a_pic">Tire uma foto</string>
+    <string name="team">equipe</string>
+    <string name="text_salutation">Seja bem vindo.</string>
+    <string name="info">Para mais informações entrem no site (Aguardem...)<u>beebox.com.br</u></string>
+    <string name="info2">Software Desenvolvido durante o SpaceApps Challenge 2017 Curitiba. Dois dias intensos de trabalho feito na Jupter TechSpace.</string>
+    <string name="add_image">Adicionar Foto</string>
+</resources>
